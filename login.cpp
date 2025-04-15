@@ -1,4 +1,4 @@
-
+#include "register.h"
 #include "login.h"
 #include "ui_login.h"
 #include "reinitialisation.h"
@@ -18,6 +18,12 @@ Login::~Login()
 {
     delete ui;
 }
+void Login::on_pushButton_inscription_clicked()
+{
+    Register *inscription = new Register(database, this);
+    inscription->exec();
+}
+
 
 void Login::verifierUtilisateur(const QString &username, const QString &password)
 {

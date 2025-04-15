@@ -17,6 +17,8 @@ public:
     ~Login();
 
 private slots:
+
+    void on_pushButton_inscription_clicked();
     void on_pushButton_connexion_clicked();
     void on_pushButton_motdepasseoublie_clicked();
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
-    <height>200</height>
+    <width>360</width>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,23 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QLabel" name="label_titre">
+     <property name="styleSheet">
+      <string notr="true">font: bold 14pt &quot;Segoe UI&quot;; color: #2c3e50;</string>
+     </property>
+     <property name="text">
+      <string>Connexion à Smart Consulting</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QLineEdit" name="lineEdit_username">
+     <property name="styleSheet">
+      <string notr="true">padding: 6px; border-radius: 10px; border: 1px solid #bdc3c7;</string>
+     </property>
      <property name="placeholderText">
       <string>Nom d'utilisateur</string>
      </property>
@@ -23,8 +39,11 @@
    </item>
    <item>
     <widget class="QLineEdit" name="lineEdit_password">
+     <property name="styleSheet">
+      <string notr="true">padding: 6px; border-radius: 10px; border: 1px solid #bdc3c7;</string>
+     </property>
      <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
+      <enum>QLineEdit::EchoMode::Password</enum>
      </property>
      <property name="placeholderText">
       <string>Mot de passe</string>
@@ -33,15 +52,37 @@
    </item>
    <item>
     <widget class="QPushButton" name="pushButton_connexion">
+     <property name="styleSheet">
+      <string notr="true">background-color: #3498db; color: white; padding: 6px; border-radius: 10px;</string>
+     </property>
      <property name="text">
-      <string>Connexion</string>
+      <string>Se connecter</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QPushButton" name="pushButton_motdepasseoublie">
+     <property name="styleSheet">
+      <string notr="true">color: #2980b9;</string>
+     </property>
      <property name="text">
       <string>Mot de passe oublié ?</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton_inscription">
+     <property name="styleSheet">
+      <string notr="true">color: #16a085;</string>
+     </property>
+     <property name="text">
+      <string>Créer un compte</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

@@ -32,7 +32,7 @@ public:
     {
         if (Reinitialisation->objectName().isEmpty())
             Reinitialisation->setObjectName("Reinitialisation");
-        Reinitialisation->resize(400, 220);
+        Reinitialisation->resize(360, 250);
         verticalLayout = new QVBoxLayout(Reinitialisation);
         verticalLayout->setObjectName("verticalLayout");
         label_question = new QLabel(Reinitialisation);
@@ -53,6 +53,7 @@ public:
 
         pushButton_valider = new QPushButton(Reinitialisation);
         pushButton_valider->setObjectName("pushButton_valider");
+        pushButton_valider->setStyleSheet(QString::fromUtf8("background-color: #e67e22; color: white; padding: 6px; border-radius: 10px;"));
 
         verticalLayout->addWidget(pushButton_valider);
 
@@ -64,8 +65,8 @@ public:
 
     void retranslateUi(QDialog *Reinitialisation)
     {
-        Reinitialisation->setWindowTitle(QCoreApplication::translate("Reinitialisation", "R\303\251initialisation du mot de passe", nullptr));
-        label_question->setText(QCoreApplication::translate("Reinitialisation", "Question secr\303\250te affich\303\251e ici", nullptr));
+        Reinitialisation->setWindowTitle(QCoreApplication::translate("Reinitialisation", "R\303\251initialiser le mot de passe", nullptr));
+        label_question->setText(QCoreApplication::translate("Reinitialisation", "Question secr\303\250te", nullptr));
         lineEdit_reponse->setPlaceholderText(QCoreApplication::translate("Reinitialisation", "Votre r\303\251ponse", nullptr));
         lineEdit_nouveau_mdp->setPlaceholderText(QCoreApplication::translate("Reinitialisation", "Nouveau mot de passe", nullptr));
         pushButton_valider->setText(QCoreApplication::translate("Reinitialisation", "Valider", nullptr));

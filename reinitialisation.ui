@@ -6,18 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>220</height>
+    <width>360</width>
+    <height>250</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Réinitialisation du mot de passe</string>
+   <string>Réinitialiser le mot de passe</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label_question">
      <property name="text">
-      <string>Question secrète affichée ici</string>
+      <string>Question secrète</string>
      </property>
     </widget>
    </item>
@@ -30,11 +30,11 @@
    </item>
    <item>
     <widget class="QLineEdit" name="lineEdit_nouveau_mdp">
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
-     </property>
      <property name="placeholderText">
       <string>Nouveau mot de passe</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
      </property>
     </widget>
    </item>
@@ -42,6 +42,9 @@
     <widget class="QPushButton" name="pushButton_valider">
      <property name="text">
       <string>Valider</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #e67e22; color: white; padding: 6px; border-radius: 10px;</string>
      </property>
     </widget>
    </item>

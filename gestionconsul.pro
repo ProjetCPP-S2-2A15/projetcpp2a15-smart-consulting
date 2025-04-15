@@ -14,6 +14,7 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    register.cpp \
     reinitialisation.cpp \
 
 
@@ -25,6 +26,7 @@ HEADERS += \
     database.h \
     login.h \
     mainwindow.h \
+    register.h \
     reinitialisation.h \
 
 
@@ -32,7 +34,9 @@ FORMS += \
     chatwindow.ui \
     login.ui \
     mainwindow.ui \
+    register.ui \
     reinitialisation.ui
+    register.ui \
 
 # Déploiement par défaut (ok)
 qnx: target.path = /tmp/$${TARGET}/bin

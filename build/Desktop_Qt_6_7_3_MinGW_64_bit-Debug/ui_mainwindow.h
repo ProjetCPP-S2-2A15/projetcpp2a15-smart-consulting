@@ -335,11 +335,11 @@ public:
         pushButton_11->setStyleSheet(QString::fromUtf8(""));
         pushButton_10 = new QPushButton(centralwidget);
         pushButton_10->setObjectName("pushButton_10");
-        pushButton_10->setGeometry(QRect(610, 430, 75, 24));
+        pushButton_10->setGeometry(QRect(600, 430, 75, 24));
         pushButton_10->setStyleSheet(QString::fromUtf8(""));
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(730, 430, 75, 24));
+        pushButton_3->setGeometry(QRect(720, 430, 75, 24));
         pushButton_chat = new QPushButton(centralwidget);
         pushButton_chat->setObjectName("pushButton_chat");
         pushButton_chat->setGeometry(QRect(830, 430, 75, 24));

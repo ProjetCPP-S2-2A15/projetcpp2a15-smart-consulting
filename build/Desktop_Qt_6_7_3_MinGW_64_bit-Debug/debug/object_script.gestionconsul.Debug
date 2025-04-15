@@ -5,8 +5,10 @@ debug/database.o
 debug/login.o
 debug/main.o
 debug/mainwindow.o
+debug/register.o
 debug/reinitialisation.o
 debug/moc_chatwindow.o
 debug/moc_login.o
 debug/moc_mainwindow.o
+debug/moc_register.o
 debug/moc_reinitialisation.o
