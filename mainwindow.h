@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSqlDatabase>
 #include "consultantmanager.h"
+#include <QSerialPort>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -28,13 +29,18 @@ private slots:
     void on_pushButton_chat_clicked(); // Chat
     void on_pushButton_3_clicked();
     void on_pushButton_8_clicked();
+    void on_pushButton_pointage_clicked();
     void on_lineEdit_textChanged(const QString &text);
     void loadConsultants();          // Charger les consultants dans le QTableWidget
+    void lireDonneesArduino();
 
 private:
     Ui::MainWindow *ui;
     ConsultantManager *consultantManager;
     QString utilisateurConnecte; // 👈 doit être ici dans private
+    QSerialPort *arduino;
+    QString serialBuffer;
+
 };
 
 #endif // MAINWINDOW_H

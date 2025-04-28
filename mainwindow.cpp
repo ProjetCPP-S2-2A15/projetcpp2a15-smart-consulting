@@ -20,6 +20,9 @@
 #include <QtCharts/QBarCategoryAxis>
 #include "login.h"
 #include "chatwindow.h"
+#include <QSerialPort>
+#include <QSerialPortInfo>
+
 
 QT_USE_NAMESPACE
 
@@ -30,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    arduino = new QSerialPort(this);
+    serialBuffer = "";
 
     // Ouvrir la fenêtre de login
     Login loginDialog(QSqlDatabase::database(), this);
@@ -40,10 +45,63 @@ MainWindow::MainWindow(QWidget *parent)
         // Si l'utilisateur annule, on ferme l'application
         QApplication::quit();
     }
+
     connect(ui->pushButton_3, &QPushButton::clicked, this, &MainWindow::on_pushButton_3_clicked);
     connect(ui->pushButton_8, &QPushButton::clicked, this, &MainWindow::on_pushButton_8_clicked);
+    connect(ui->pushButton_pointage, &QPushButton::clicked, this, &MainWindow::on_pushButton_pointage_clicked);
 
 }
+
+
+
+void MainWindow::on_pushButton_pointage_clicked()
+{
+    if (!arduino->isOpen()) {
+        arduino->setPortName("COM7"); // adapte le COM port
+        arduino->setBaudRate(QSerialPort::Baud9600);
+        arduino->setDataBits(QSerialPort::Data8);
+        arduino->setParity(QSerialPort::NoParity);
+        arduino->setStopBits(QSerialPort::OneStop);
+        arduino->setFlowControl(QSerialPort::NoFlowControl);
+
+        if (!arduino->open(QIODevice::ReadWrite)) {
+            QMessageBox::critical(this, "Erreur", "Impossible d'ouvrir le port série !");
+            return;
+        }
+
+        connect(arduino, &QSerialPort::readyRead, this, &MainWindow::lireDonneesArduino);
+    }
+    QMessageBox::information(this, "Pointage", "Tapez votre ID sur le clavier Arduino.");
+}
+
+
+
+void MainWindow::lireDonneesArduino()
+{
+    serialBuffer += arduino->readAll();
+    if (serialBuffer.contains("\n")) { // On attend un retour chariot (\n)
+        QString id = serialBuffer.trimmed(); // Trim le \n et espaces
+        serialBuffer.clear(); // clear au lieu de = ""
+
+        qDebug() << "ID reçu : " << id;
+
+        QSqlQuery query;
+        query.prepare("SELECT * FROM consultant WHERE id_consultant = :id");
+        query.bindValue(":id", id.toInt());
+        if (query.exec() && query.next()) {
+            arduino->write("Bienvenue\n"); // Envoyer le message à Arduino
+            qDebug() << "Consultant trouvé. Message Bienvenue envoyé.";
+        } else {
+            arduino->write("Erreur ID\n");
+            qDebug() << "Consultant introuvable. Message Erreur ID envoyé.";
+        }
+    }
+}
+
+
+
+
+
 void MainWindow::setUtilisateurConnecte(const QString &pseudo)
 {
     utilisateurConnecte = pseudo;
