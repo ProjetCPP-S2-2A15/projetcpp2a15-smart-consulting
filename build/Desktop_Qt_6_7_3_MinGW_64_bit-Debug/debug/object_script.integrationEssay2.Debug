@@ -1,0 +1,11 @@
+debug/client.o
+debug/connection.o
+debug/consultant.o
+debug/mailing.o
+debug/main.o
+debug/mainwindow.o
+debug/projet.o
+debug/ressource.o
+debug/tache.o
+debug/qrc_logo.o
+debug/moc_mainwindow.o

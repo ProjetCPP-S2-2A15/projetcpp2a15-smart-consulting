@@ -1,0 +1,11 @@
+release/client.o
+release/connection.o
+release/consultant.o
+release/mailing.o
+release/main.o
+release/mainwindow.o
+release/projet.o
+release/ressource.o
+release/tache.o
+release/qrc_logo.o
+release/moc_mainwindow.o
