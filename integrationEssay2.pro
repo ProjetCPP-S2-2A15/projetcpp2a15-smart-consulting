@@ -40,6 +40,7 @@ CONFIG += c++17
 
 SOURCES += \
     connection.cpp \
+    consultant.cpp \
     main.cpp \
     mainwindow.cpp \
     projet.cpp \
@@ -47,6 +48,7 @@ SOURCES += \
 
 HEADERS += \
     connection.h \
+    consultant.h \
     mainwindow.h \
     projet.h \
     ressource.h

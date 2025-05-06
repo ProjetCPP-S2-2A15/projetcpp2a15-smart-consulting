@@ -21,6 +21,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -141,6 +142,58 @@ public:
     QComboBox *comboBox;
     QLineEdit *lineEdit_id_5;
     QPushButton *pushButton_10;
+    QWidget *page3;
+    QLabel *label_titre;
+    QLineEdit *lineEdit_username;
+    QLineEdit *lineEdit_password;
+    QPushButton *pushButton_connexion;
+    QPushButton *pushButton_motdepasseoublie;
+    QPushButton *pushButton_inscription;
+    QWidget *page4;
+    QLabel *label_21;
+    QLabel *label_20;
+    QPushButton *pushButton_11;
+    QPushButton *pushButton_29;
+    QPushButton *pushButton_14;
+    QPushButton *pushButton_27;
+    QPushButton *pushButton_28;
+    QTableWidget *tableWidget;
+    QGroupBox *groupBox_11;
+    QLabel *label_22;
+    QLabel *label_23;
+    QLineEdit *lineEdit_4;
+    QPushButton *pushButton_30;
+    QPushButton *pushButton_31;
+    QLineEdit *lineEdit_5;
+    QLabel *label_25;
+    QLabel *label_28;
+    QLabel *label_29;
+    QLineEdit *lineEdit_7;
+    QLineEdit *lineEdit_8;
+    QPushButton *pushButton_32;
+    QPushButton *pushButton_33;
+    QGroupBox *groupBox_12;
+    QPushButton *pushButton_34;
+    QLineEdit *lineEdit_specialite;
+    QPushButton *pushButton_35;
+    QLineEdit *lineEdit_2;
+    QPushButton *pushButton_36;
+    QPushButton *pushButton_39;
+    QPushButton *pushButton_pointage;
+    QWidget *page5;
+    QLabel *label_title;
+    QLineEdit *lineEdit_username_2;
+    QLineEdit *lineEdit_password_2;
+    QLineEdit *lineEdit_question;
+    QLineEdit *lineEdit_reponse;
+    QPushButton *pushButton_37;
+    QPushButton *pushButton_inscrire;
+    QWidget *page6;
+    QLabel *label_question;
+    QLineEdit *lineEdit_reponse_2;
+    QLineEdit *lineEdit_nouveau_mdp;
+    QPushButton *pushButton_valider;
+    QPushButton *pushButton_38;
     QMenuBar *menubar;
     QToolBar *toolBar;
     QToolBar *toolBar_2;
@@ -154,7 +207,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName("stackedWidget");
-        stackedWidget->setGeometry(QRect(0, 10, 1581, 811));
+        stackedWidget->setGeometry(QRect(0, 0, 1591, 831));
         Page1 = new QWidget();
         Page1->setObjectName("Page1");
         groupBox = new QGroupBox(Page1);
@@ -1382,6 +1435,292 @@ public:
         pushButton_10->setObjectName("pushButton_10");
         pushButton_10->setGeometry(QRect(30, 30, 131, 41));
         stackedWidget->addWidget(Page2);
+        page3 = new QWidget();
+        page3->setObjectName("page3");
+        label_titre = new QLabel(page3);
+        label_titre->setObjectName("label_titre");
+        label_titre->setGeometry(QRect(150, 30, 481, 201));
+        label_titre->setStyleSheet(QString::fromUtf8("font: bold 14pt \"Segoe UI\"; color: #2c3e50;"));
+        label_titre->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        lineEdit_username = new QLineEdit(page3);
+        lineEdit_username->setObjectName("lineEdit_username");
+        lineEdit_username->setGeometry(QRect(230, 200, 341, 51));
+        lineEdit_username->setStyleSheet(QString::fromUtf8("padding: 6px; border-radius: 10px; border: 1px solid #bdc3c7;"));
+        lineEdit_password = new QLineEdit(page3);
+        lineEdit_password->setObjectName("lineEdit_password");
+        lineEdit_password->setGeometry(QRect(230, 260, 341, 51));
+        lineEdit_password->setStyleSheet(QString::fromUtf8("padding: 6px; border-radius: 10px; border: 1px solid #bdc3c7;"));
+        lineEdit_password->setEchoMode(QLineEdit::EchoMode::Password);
+        pushButton_connexion = new QPushButton(page3);
+        pushButton_connexion->setObjectName("pushButton_connexion");
+        pushButton_connexion->setGeometry(QRect(230, 340, 342, 28));
+        pushButton_connexion->setStyleSheet(QString::fromUtf8("background-color: #3498db; color: white; padding: 6px; border-radius: 10px;"));
+        pushButton_motdepasseoublie = new QPushButton(page3);
+        pushButton_motdepasseoublie->setObjectName("pushButton_motdepasseoublie");
+        pushButton_motdepasseoublie->setGeometry(QRect(230, 390, 342, 24));
+        pushButton_motdepasseoublie->setStyleSheet(QString::fromUtf8("color: #2980b9;"));
+        pushButton_motdepasseoublie->setFlat(true);
+        pushButton_inscription = new QPushButton(page3);
+        pushButton_inscription->setObjectName("pushButton_inscription");
+        pushButton_inscription->setGeometry(QRect(220, 420, 342, 24));
+        pushButton_inscription->setStyleSheet(QString::fromUtf8("color: #16a085;"));
+        pushButton_inscription->setFlat(true);
+        stackedWidget->addWidget(page3);
+        page4 = new QWidget();
+        page4->setObjectName("page4");
+        label_21 = new QLabel(page4);
+        label_21->setObjectName("label_21");
+        label_21->setGeometry(QRect(10, 50, 151, 571));
+        label_21->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(34, 32, 82, 255), stop:1 rgba(0, 0, 0, 255));\n"
+"border-radius: 10px;"));
+        label_20 = new QLabel(page4);
+        label_20->setObjectName("label_20");
+        label_20->setGeometry(QRect(20, 70, 241, 41));
+        label_20->setFont(font);
+        pushButton_11 = new QPushButton(page4);
+        pushButton_11->setObjectName("pushButton_11");
+        pushButton_11->setGeometry(QRect(10, 450, 151, 51));
+        pushButton_11->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"\n"
+"    color: black;  /* D\303\251finir la couleur du texte en noir */\n"
+"    border: 1px solid black;  /* Optionnel : pour ajouter une bordure noire */\n"
+"}\n"
+""));
+        pushButton_29 = new QPushButton(page4);
+        pushButton_29->setObjectName("pushButton_29");
+        pushButton_29->setGeometry(QRect(10, 120, 151, 51));
+        pushButton_14 = new QPushButton(page4);
+        pushButton_14->setObjectName("pushButton_14");
+        pushButton_14->setGeometry(QRect(10, 200, 151, 51));
+        pushButton_27 = new QPushButton(page4);
+        pushButton_27->setObjectName("pushButton_27");
+        pushButton_27->setGeometry(QRect(10, 280, 151, 51));
+        pushButton_28 = new QPushButton(page4);
+        pushButton_28->setObjectName("pushButton_28");
+        pushButton_28->setGeometry(QRect(10, 370, 151, 51));
+        tableWidget = new QTableWidget(page4);
+        if (tableWidget->columnCount() < 4)
+            tableWidget->setColumnCount(4);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        tableWidget->setObjectName("tableWidget");
+        tableWidget->setGeometry(QRect(480, 240, 531, 192));
+        tableWidget->setStyleSheet(QString::fromUtf8(""));
+        groupBox_11 = new QGroupBox(page4);
+        groupBox_11->setObjectName("groupBox_11");
+        groupBox_11->setGeometry(QRect(200, 150, 241, 331));
+        groupBox_11->setStyleSheet(QString::fromUtf8("/* Style pour le QGroupBox avec la couleur #e8ded7 */\n"
+"QGroupBox {\n"
+"    background-color: #e8ded7; /* Couleur beige clair */\n"
+"    border: 1px solid #d1c6b9; /* Bordure l\303\251g\303\250rement plus fonc\303\251e */\n"
+"    border-radius: 10px; /* Coins arrondis */\n"
+"    padding: 10px; /* Espacement interne */\n"
+"}\n"
+""));
+        groupBox_11->setFlat(true);
+        groupBox_11->setCheckable(false);
+        label_22 = new QLabel(groupBox_11);
+        label_22->setObjectName("label_22");
+        label_22->setGeometry(QRect(20, 70, 121, 20));
+        label_23 = new QLabel(groupBox_11);
+        label_23->setObjectName("label_23");
+        label_23->setGeometry(QRect(20, 110, 81, 16));
+        lineEdit_4 = new QLineEdit(groupBox_11);
+        lineEdit_4->setObjectName("lineEdit_4");
+        lineEdit_4->setGeometry(QRect(100, 70, 113, 22));
+        pushButton_30 = new QPushButton(groupBox_11);
+        pushButton_30->setObjectName("pushButton_30");
+        pushButton_30->setGeometry(QRect(130, 240, 75, 24));
+        pushButton_30->setStyleSheet(QString::fromUtf8("/* Style pour le QPushButton avec la couleur #dbaf8e */\n"
+"QPushButton {\n"
+"    background-color: #dbaf8e; /* Couleur beige clair */\n"
+"   color: #000; /* Texte blanc */\n"
+"    border-radius: 5px; /* Coins arrondis */\n"
+"     border: 1px  solid #c68c61; /* Bordure l\303\251g\303\250rement plus fonc\303\251e */\n"
+"    padding: 5px; /* Espacement interne */\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"/* Style au survol */\n"
+"QPushButton:hover {\n"
+"    background-color: #d49f74; /* Couleur plus fonc\303\251e au survol */\n"
+"}\n"
+"\n"
+"/* Style lorsqu'il est press\303\251 */\n"
+"QPushButton:pressed {\n"
+"    background-color: #c68c61; /* Couleur encore plus fonc\303\251e au clic */\n"
+"    padding-left: 5px;\n"
+"    padding-top: 5px;\n"
+"}\n"
+""));
+        pushButton_31 = new QPushButton(groupBox_11);
+        pushButton_31->setObjectName("pushButton_31");
+        pushButton_31->setGeometry(QRect(30, 240, 75, 24));
+        pushButton_31->setStyleSheet(QString::fromUtf8("/* Style pour le QPushButton avec la couleur #dbaf8e */\n"
+"QPushButton {\n"
+"    background-color: #dbaf8e; /* Couleur beige clair */\n"
+"   color: #000; /* Texte blanc */\n"
+"    border-radius: 5px; /* Coins arrondis */\n"
+"     border: 1px  solid #c68c61; /* Bordure l\303\251g\303\250rement plus fonc\303\251e */\n"
+"    padding: 5px; /* Espacement interne */\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"/* Style au survol */\n"
+"QPushButton:hover {\n"
+"    background-color: #d49f74; /* Couleur plus fonc\303\251e au survol */\n"
+"}\n"
+"\n"
+"/* Style lorsqu'il est press\303\251 */\n"
+"QPushButton:pressed {\n"
+"    background-color: #c68c61; /* Couleur encore plus fonc\303\251e au clic */\n"
+"    padding-left: 5px;\n"
+"    padding-top: 5px;\n"
+"}\n"
+""));
+        lineEdit_5 = new QLineEdit(groupBox_11);
+        lineEdit_5->setObjectName("lineEdit_5");
+        lineEdit_5->setGeometry(QRect(100, 110, 113, 22));
+        label_25 = new QLabel(groupBox_11);
+        label_25->setObjectName("label_25");
+        label_25->setGeometry(QRect(20, 150, 91, 16));
+        label_28 = new QLabel(groupBox_11);
+        label_28->setObjectName("label_28");
+        label_28->setGeometry(QRect(20, 170, 91, 16));
+        label_29 = new QLabel(groupBox_11);
+        label_29->setObjectName("label_29");
+        label_29->setGeometry(QRect(20, 190, 121, 16));
+        lineEdit_7 = new QLineEdit(groupBox_11);
+        lineEdit_7->setObjectName("lineEdit_7");
+        lineEdit_7->setGeometry(QRect(100, 150, 113, 22));
+        lineEdit_8 = new QLineEdit(groupBox_11);
+        lineEdit_8->setObjectName("lineEdit_8");
+        lineEdit_8->setGeometry(QRect(100, 190, 113, 22));
+        pushButton_32 = new QPushButton(groupBox_11);
+        pushButton_32->setObjectName("pushButton_32");
+        pushButton_32->setGeometry(QRect(30, 280, 75, 24));
+        pushButton_32->setStyleSheet(QString::fromUtf8(""));
+        pushButton_33 = new QPushButton(groupBox_11);
+        pushButton_33->setObjectName("pushButton_33");
+        pushButton_33->setGeometry(QRect(130, 280, 75, 24));
+        pushButton_33->setStyleSheet(QString::fromUtf8(""));
+        groupBox_12 = new QGroupBox(page4);
+        groupBox_12->setObjectName("groupBox_12");
+        groupBox_12->setGeometry(QRect(450, 110, 831, 81));
+        groupBox_12->setStyleSheet(QString::fromUtf8("/* Style g\303\251n\303\251ral pour le QGroupBox */\n"
+"QGroupBox {\n"
+"    background-color: transparent;  /* Fond transparent */\n"
+"    border: 1px solid transparent;  /* Bordure transparente */\n"
+"    border-radius: 10px;            /* Coins arrondis */\n"
+"    padding: 10px;                  /* Espacement interne */\n"
+"}\n"
+"\n"
+"/* Style pour le QPushButton */\n"
+"QPushButton {\n"
+"    background-color: #ebb620; /* Jaune dor\303\251 */\n"
+"    color: rgba(0, 0, 0, 220); /* Texte noir avec l\303\251g\303\250re transparence */\n"
+"    border-radius: 5px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #d9a519; /* Jaune dor\303\251 plus fonc\303\251 au survol */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    padding-left: 5px;\n"
+"    padding-top: 5px;\n"
+"    background-color: #b68d17; /* Jaune dor\303\251 encore plus fonc\303\251 lors du clic */\n"
+"}\n"
+"\n"
+"/* Style pour le QLineEdit */\n"
+"QLineEdit {\n"
+"    background-color: rgba(255, 255, 255, 255);\n"
+"    b"
+                        "order: 2px solid rgba(0, 0, 0, 0);\n"
+"    border-bottom-color: #ebb620; /* Bordure inf\303\251rieure jaune dor\303\251 */\n"
+"    color: rgb(0, 0, 0);\n"
+"    padding-bottom: 7px;\n"
+"}\n"
+""));
+        pushButton_34 = new QPushButton(groupBox_12);
+        pushButton_34->setObjectName("pushButton_34");
+        pushButton_34->setGeometry(QRect(20, 20, 91, 24));
+        lineEdit_specialite = new QLineEdit(groupBox_12);
+        lineEdit_specialite->setObjectName("lineEdit_specialite");
+        lineEdit_specialite->setGeometry(QRect(130, 20, 113, 22));
+        pushButton_35 = new QPushButton(groupBox_12);
+        pushButton_35->setObjectName("pushButton_35");
+        pushButton_35->setGeometry(QRect(260, 20, 91, 24));
+        pushButton_35->setStyleSheet(QString::fromUtf8(""));
+        lineEdit_2 = new QLineEdit(groupBox_12);
+        lineEdit_2->setObjectName("lineEdit_2");
+        lineEdit_2->setGeometry(QRect(360, 20, 113, 22));
+        pushButton_36 = new QPushButton(groupBox_12);
+        pushButton_36->setObjectName("pushButton_36");
+        pushButton_36->setGeometry(QRect(480, 20, 75, 24));
+        pushButton_39 = new QPushButton(page4);
+        pushButton_39->setObjectName("pushButton_39");
+        pushButton_39->setGeometry(QRect(14, 10, 141, 31));
+        pushButton_pointage = new QPushButton(page4);
+        pushButton_pointage->setObjectName("pushButton_pointage");
+        pushButton_pointage->setGeometry(QRect(900, 470, 75, 24));
+        stackedWidget->addWidget(page4);
+        page5 = new QWidget();
+        page5->setObjectName("page5");
+        label_title = new QLabel(page5);
+        label_title->setObjectName("label_title");
+        label_title->setGeometry(QRect(160, 20, 481, 191));
+        label_title->setStyleSheet(QString::fromUtf8("font: bold 14pt \"Segoe UI\"; color: #2c3e50;"));
+        label_title->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        lineEdit_username_2 = new QLineEdit(page5);
+        lineEdit_username_2->setObjectName("lineEdit_username_2");
+        lineEdit_username_2->setGeometry(QRect(250, 191, 342, 31));
+        lineEdit_password_2 = new QLineEdit(page5);
+        lineEdit_password_2->setObjectName("lineEdit_password_2");
+        lineEdit_password_2->setGeometry(QRect(250, 230, 342, 31));
+        lineEdit_password_2->setEchoMode(QLineEdit::EchoMode::Password);
+        lineEdit_question = new QLineEdit(page5);
+        lineEdit_question->setObjectName("lineEdit_question");
+        lineEdit_question->setGeometry(QRect(250, 270, 342, 31));
+        lineEdit_reponse = new QLineEdit(page5);
+        lineEdit_reponse->setObjectName("lineEdit_reponse");
+        lineEdit_reponse->setGeometry(QRect(250, 310, 342, 31));
+        pushButton_37 = new QPushButton(page5);
+        pushButton_37->setObjectName("pushButton_37");
+        pushButton_37->setGeometry(QRect(40, 30, 161, 51));
+        pushButton_inscrire = new QPushButton(page5);
+        pushButton_inscrire->setObjectName("pushButton_inscrire");
+        pushButton_inscrire->setGeometry(QRect(250, 360, 342, 28));
+        pushButton_inscrire->setStyleSheet(QString::fromUtf8("background-color: #2ecc71; color: white; padding: 6px; border-radius: 10px;"));
+        stackedWidget->addWidget(page5);
+        page6 = new QWidget();
+        page6->setObjectName("page6");
+        label_question = new QLabel(page6);
+        label_question->setObjectName("label_question");
+        label_question->setGeometry(QRect(190, 51, 391, 181));
+        lineEdit_reponse_2 = new QLineEdit(page6);
+        lineEdit_reponse_2->setObjectName("lineEdit_reponse_2");
+        lineEdit_reponse_2->setGeometry(QRect(120, 181, 342, 41));
+        lineEdit_nouveau_mdp = new QLineEdit(page6);
+        lineEdit_nouveau_mdp->setObjectName("lineEdit_nouveau_mdp");
+        lineEdit_nouveau_mdp->setGeometry(QRect(120, 240, 342, 41));
+        lineEdit_nouveau_mdp->setEchoMode(QLineEdit::EchoMode::Password);
+        pushButton_valider = new QPushButton(page6);
+        pushButton_valider->setObjectName("pushButton_valider");
+        pushButton_valider->setGeometry(QRect(120, 300, 342, 31));
+        pushButton_valider->setStyleSheet(QString::fromUtf8("background-color: #e67e22; color: white; padding: 6px; border-radius: 10px;"));
+        pushButton_38 = new QPushButton(page6);
+        pushButton_38->setObjectName("pushButton_38");
+        pushButton_38->setGeometry(QRect(20, 40, 121, 31));
+        stackedWidget->addWidget(page6);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -1516,6 +1855,55 @@ public:
 
         comboBox->setPlaceholderText(QString());
         pushButton_10->setText(QCoreApplication::translate("MainWindow", "RETOUR", nullptr));
+        label_titre->setText(QCoreApplication::translate("MainWindow", "Connexion \303\240 Smart Consulting", nullptr));
+        lineEdit_username->setPlaceholderText(QCoreApplication::translate("MainWindow", "Nom d'utilisateur", nullptr));
+        lineEdit_password->setPlaceholderText(QCoreApplication::translate("MainWindow", "Mot de passe", nullptr));
+        pushButton_connexion->setText(QCoreApplication::translate("MainWindow", "Se connecter", nullptr));
+        pushButton_motdepasseoublie->setText(QCoreApplication::translate("MainWindow", "Mot de passe oubli\303\251 ?", nullptr));
+        pushButton_inscription->setText(QCoreApplication::translate("MainWindow", "Cr\303\251er un compte", nullptr));
+        label_21->setText(QString());
+        label_20->setText(QCoreApplication::translate("MainWindow", "Dashboard", nullptr));
+        pushButton_11->setText(QCoreApplication::translate("MainWindow", "Consultant", nullptr));
+        pushButton_29->setText(QCoreApplication::translate("MainWindow", "Projet", nullptr));
+        pushButton_14->setText(QCoreApplication::translate("MainWindow", "Ressource", nullptr));
+        pushButton_27->setText(QCoreApplication::translate("MainWindow", "T\303\242che", nullptr));
+        pushButton_28->setText(QCoreApplication::translate("MainWindow", "Client", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "email", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "nom", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "specialit\303\251", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "disponibilit\303\251", nullptr));
+        groupBox_11->setTitle(QCoreApplication::translate("MainWindow", "Ajouter", nullptr));
+        label_22->setText(QCoreApplication::translate("MainWindow", "Email", nullptr));
+        label_23->setText(QCoreApplication::translate("MainWindow", "Nom-Prenom", nullptr));
+        pushButton_30->setText(QCoreApplication::translate("MainWindow", "Afficher", nullptr));
+        pushButton_31->setText(QCoreApplication::translate("MainWindow", "Ajouter ", nullptr));
+        label_25->setText(QCoreApplication::translate("MainWindow", "Sp\303\251cialit\303\251", nullptr));
+        label_28->setText(QString());
+        label_29->setText(QCoreApplication::translate("MainWindow", "Disponibilit\303\251", nullptr));
+        pushButton_32->setText(QCoreApplication::translate("MainWindow", "modifier", nullptr));
+        pushButton_33->setText(QCoreApplication::translate("MainWindow", "supprimer", nullptr));
+        groupBox_12->setTitle(QString());
+        pushButton_34->setText(QCoreApplication::translate("MainWindow", "Rechercher", nullptr));
+        pushButton_35->setText(QCoreApplication::translate("MainWindow", "Exportation", nullptr));
+        pushButton_36->setText(QCoreApplication::translate("MainWindow", "statistiques", nullptr));
+        pushButton_39->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        pushButton_pointage->setText(QCoreApplication::translate("MainWindow", "pointage", nullptr));
+        label_title->setText(QCoreApplication::translate("MainWindow", "Cr\303\251er un compte", nullptr));
+        lineEdit_username_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Nom d'utilisateur", nullptr));
+        lineEdit_password_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Mot de passe", nullptr));
+        lineEdit_question->setPlaceholderText(QCoreApplication::translate("MainWindow", "Question secr\303\250te", nullptr));
+        lineEdit_reponse->setPlaceholderText(QCoreApplication::translate("MainWindow", "R\303\251ponse secr\303\250te", nullptr));
+        pushButton_37->setText(QCoreApplication::translate("MainWindow", "retour", nullptr));
+        pushButton_inscrire->setText(QCoreApplication::translate("MainWindow", "S'inscrire", nullptr));
+        label_question->setText(QCoreApplication::translate("MainWindow", "Question secr\303\250te", nullptr));
+        lineEdit_reponse_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Votre r\303\251ponse", nullptr));
+        lineEdit_nouveau_mdp->setPlaceholderText(QCoreApplication::translate("MainWindow", "Nouveau mot de passe", nullptr));
+        pushButton_valider->setText(QCoreApplication::translate("MainWindow", "Valider", nullptr));
+        pushButton_38->setText(QCoreApplication::translate("MainWindow", "retour", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
         toolBar_2->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar_2", nullptr));
     } // retranslateUi

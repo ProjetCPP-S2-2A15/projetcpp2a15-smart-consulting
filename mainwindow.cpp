@@ -4,7 +4,7 @@
 #include "ui_mainwindow.h"
 #include "projet.h"
 #include "ressource.h"
-
+#include "consultant.h"
 #include <QMessageBox>
 #include <QSqlQuery>
 #include <QVariant>
@@ -83,14 +83,29 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     ui->stackedWidget->setCurrentIndex(1);
-
+// moujib crud
+    connect(ui->pushButton_31, &QPushButton::clicked, this, &MainWindow::on_pushButton_9_clicked);
     // Connecter le bouton pushButton_4 à la fonction showPage1
     connect(ui->pushButton_4, &QPushButton::clicked, this, &MainWindow::showPage1);
     //  connecter le bouton ressource à page 2
     connect(ui->pushButton_19, &QPushButton::clicked, this, &MainWindow::showPage2);
+    //
+     connect(ui->pushButton_22, &QPushButton::clicked, this, &MainWindow::showPage3);
+    //connecter bouton connexion à page 4
+     connect(ui->pushButton_connexion, &QPushButton::clicked, this, &MainWindow::on_pushButton_connexion_clicked);
+    // page 5
+      connect(ui->pushButton_inscription, &QPushButton::clicked, this, &MainWindow::showPage5);
+   // retour page 3
+      connect(ui->pushButton_37, &QPushButton::clicked, this, &MainWindow::showHomePage3);
+       connect(ui->pushButton_38, &QPushButton::clicked, this, &MainWindow::showHomePage3_2);
+      // page 3
+        connect(ui->pushButton_39, &QPushButton::clicked, this, &MainWindow::showHomePage3_2);
+
+
     //connecter le bouton retour de projet à page 1
     connect(ui->pushButton_9, &QPushButton::clicked, this, &MainWindow::showHomePage);
     //connecter le bouton retour du ressource  à page 1
+
     connect(ui->pushButton_10, &QPushButton::clicked, this, &MainWindow::showHomePage2);
     connect(ui->pushButton_ajouter_2, &QPushButton::clicked, this, &::MainWindow::on_pushButton_ajouter_2_clicked);
     connect(ui->pushButton_ajouter, &QPushButton::clicked, this, &MainWindow::on_pushButton_ajouter_clicked);
@@ -109,6 +124,35 @@ MainWindow::MainWindow(QWidget *parent) :
        connect(ui->buttonTrier_2, &QPushButton::clicked, this, &MainWindow::on_buttonTrier_clicked2);
       connect(ui->pushButton_statistiques_2, &QPushButton::clicked, this, &MainWindow::on_pushButton_statistiques_clicked2);
        connect(ui->pushButton_QR, &QPushButton::clicked, this, &MainWindow::on_pushButton_QR_clicked);
+      // reini
+        connect(ui->pushButton_valider, &QPushButton::clicked, this, &MainWindow::on_pushButton_valider_clicked);
+      //motdepasse
+        connect(ui->pushButton_motdepasseoublie, &QPushButton::clicked, this, &MainWindow::on_pushButton_mdp_oublie_clicked);
+        //page login de consultant
+
+        //inscrip
+        connect(ui->pushButton_inscrire, &QPushButton::clicked, this, &MainWindow::on_pushButton_inscrire_clicked);
+        //affichage consultant
+        connect(ui->pushButton_30, &QPushButton::clicked, this, &MainWindow::loadConsultants);
+        //modifier consultant
+        connect(ui->pushButton_32, &QPushButton::clicked, this, &MainWindow::on_pushButton_32_clicked);
+        // supprimer un consultant
+
+         connect(ui-> pushButton_33, &QPushButton::clicked, this, &MainWindow:: on_pushButton_11_clicked);
+         //pdf
+
+         connect(ui->  pushButton_35, &QPushButton::clicked, this, &MainWindow:: on_pushButton_8_clicked);
+         //stat
+
+         connect(ui->  pushButton_36, &QPushButton::clicked, this, &MainWindow:: on_pushButton_3_clicked);
+         //recherche
+         connect(ui->lineEdit_specialite, &QLineEdit::textChanged, this, &MainWindow::on_lineEdit_textChanged);
+         //arduini
+          connect(ui->pushButton_pointage, &QPushButton::clicked, this, &MainWindow::on_pushButton_pointage_clicked);
+
+
+
+
 
 }
 
@@ -117,15 +161,81 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+bool MainWindow::verifierIdentifiants(const QString &username, const QString &password)
+{
+    if (!QSqlDatabase::database().isOpen()) {
+        qDebug() << "⚠️ Base de données non ouverte !";
+        return false;
+    }
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM UTILISATEUR WHERE username = 'islem' AND mot_de_passe = 'guesmi' ");
+    query.bindValue(":username", username.trimmed());
+    query.bindValue(":password", password.trimmed());
+
+    if (query.exec() && query.next()) {
+        return true;  // Identifiants valides
+    } else {
+        qDebug() << "❌ Aucune correspondance trouvée ou erreur SQL:" << query.lastError().text();
+        return false;
+    }
+}
+
+
+// bouton connexion
+void MainWindow::on_pushButton_connexion_clicked()
+{
+    // Récupérer les données saisies par l'utilisateur
+    QString username = ui->lineEdit_nom->text().trimmed();
+    QString password = ui->lineEdit_password->text().trimmed();
+
+    // Affichage dans la console pour vérification
+    qDebug() << "Tentative de connexion avec:";
+    qDebug() << "Nom d'utilisateur :" << username;
+    qDebug() << "Mot de passe      :" << password;
+
+    // Vérifier les identifiants dans la base de données
+    if (verifierIdentifiants(username, password)) {
+        qDebug() << "✅ Connexion réussie. Accès à la page 4.";
+        ui->stackedWidget->setCurrentIndex(4);  // Afficher la page 4 après connexion
+    } else {
+        qDebug() << "❌ Connexion échouée. Identifiants incorrects.";
+        QMessageBox::warning(this, "Erreur de connexion", "Nom d'utilisateur ou mot de passe incorrect.");
+    }
+}
+
+
+
 // Fonction qui change la page du QStackedWidget
 void MainWindow::showPage1() {
     ui->stackedWidget->setCurrentIndex(0);  // Affiche la page 1
+}
+// page 5
+void MainWindow::showPage5()
+{
+    // Changer pour la page 2 (index 2)
+    ui->stackedWidget->setCurrentIndex(5);
 }
 
 void MainWindow::showPage2()
 {
     // Changer pour la page 2 (index 2)
     ui->stackedWidget->setCurrentIndex(2);
+}
+void MainWindow::showPage3()
+{
+    // Changer pour la page 2 (index 2)
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::showPage33()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+void MainWindow::showPage6()
+{
+    // Changer pour la page 2 (index 6)
+    ui->stackedWidget->setCurrentIndex(6);
 }
 void MainWindow::showHomePage()
 {
@@ -136,7 +246,155 @@ void MainWindow::showHomePage2()
 {
     ui->stackedWidget->setCurrentIndex(1); // Retour à la Page 0 (index 1)
 }
+void MainWindow::showHomePage3()
+{
+    ui->stackedWidget->setCurrentIndex(3); // Retour à la Page 0 (index 1)
+}
+void MainWindow::showHomePage3_2()
+{
+    ui->stackedWidget->setCurrentIndex(3); // Retour à la Page 0 (index 1)
+}
 
+// inscrire
+void MainWindow::on_pushButton_inscrire_clicked()
+{
+    qDebug() << "Inscription appelée";
+    QString username = ui->lineEdit_username_2->text();
+    QString password = ui->lineEdit_password_2->text();
+    QString question = ui->lineEdit_question->text();
+    QString reponse  = ui->lineEdit_reponse->text();
+
+    if (username.isEmpty() || password.isEmpty() || question.isEmpty() || reponse.isEmpty()) {
+        QMessageBox::warning(this, "Champs vides", "Veuillez remplir tous les champs !");
+        return;
+    }
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO UTILISATEUR (username, mot_de_passe, question_secrete, reponse_secrete) "
+                  "VALUES (:u, :p, :q, :r)");
+    query.bindValue(":u", username);
+    query.bindValue(":p", password);
+    query.bindValue(":q", question);
+    query.bindValue(":r", reponse);
+
+    if (query.exec()) {
+        QMessageBox::information(this, "Succès", "Utilisateur inscrit avec succès !");
+        ui->stackedWidget->setCurrentIndex(3);  // Revenir à la page de connexion
+    } else {
+        QMessageBox::critical(this, "Erreur", "Échec de l'inscription : " + query.lastError().text());
+    }
+}
+
+// reinitialisation
+//motdepasse
+void MainWindow::on_pushButton_mdp_oublie_clicked()
+{
+    QString username = ui->lineEdit_username->text().trimmed();  // Nom d'utilisateur saisi
+
+    if (username.isEmpty()) {
+        QMessageBox::warning(this, "Champ vide", "Veuillez entrer votre nom d'utilisateur.");
+        return;
+    }
+
+    QSqlQuery query;
+    query.prepare("SELECT question_secrete FROM UTILISATEUR WHERE username = :username");
+    query.bindValue(":username", username);
+
+    if (query.exec() && query.next()) {
+        QString question = query.value(0).toString();
+        utilisateurActuel = username; // mémorise l'utilisateur pour la suite
+        ui->label_question->setText(question); // affiche la question sur la page suivante
+        ui->stackedWidget->setCurrentIndex(6); // aller à la page de réinitialisation
+    } else {
+        QMessageBox::warning(this, "Erreur", "Nom d'utilisateur introuvable.");
+    }
+}
+
+
+void MainWindow::preparerReinitialisation(const QString &username, const QString &question)
+{
+    utilisateurActuel = username;  // Stocker l'utilisateur pour le traitement suivant
+    ui->label_question->setText(question);  // Mettre à jour l'UI avec la question secrète
+    ui->stackedWidget->setCurrentIndex(6);    // Accéder à la page de réinitialisation (par exemple index 5)
+}
+
+
+void MainWindow::on_pushButton_valider_clicked()
+{
+    QString reponse = ui->lineEdit_reponse_2->text().trimmed();
+    QString nouveauMDP = ui->lineEdit_nouveau_mdp->text().trimmed();
+
+    qDebug() << "Nom utilisateur:" << utilisateurActuel;
+
+    if (!QSqlDatabase::database().isOpen()) {
+        QMessageBox::critical(this, "Erreur", "Base de données non ouverte !");
+        return;
+    }
+
+    if (reponse.isEmpty() || nouveauMDP.isEmpty()) {
+        QMessageBox::warning(this, "Champs vides", "Veuillez remplir tous les champs.");
+        return;
+    }
+
+    QSqlQuery query;
+    query.prepare("SELECT reponse_secrete FROM UTILISATEUR WHERE username = :username");
+    query.bindValue(":username", utilisateurActuel);
+
+    if (query.exec() && query.next()) {
+        QString bonneReponse = query.value(0).toString();
+        if (bonneReponse == reponse) {
+            QSqlQuery updateQuery;
+            updateQuery.prepare("UPDATE UTILISATEUR SET mot_de_passe = :mdp WHERE username = :username");
+            updateQuery.bindValue(":mdp", nouveauMDP);
+            updateQuery.bindValue(":username", utilisateurActuel);
+
+            if (updateQuery.exec()) {
+                QMessageBox::information(this, "Succès", "Mot de passe mis à jour !");
+                ui->stackedWidget->setCurrentIndex(3);
+            } else {
+                QMessageBox::critical(this, "Erreur", "Erreur lors de la mise à jour.");
+            }
+        } else {
+            QMessageBox::warning(this, "Erreur", "Réponse incorrecte.");
+        }
+    } else {
+        QMessageBox::critical(this, "Erreur", "Utilisateur introuvable.");
+    }
+}
+
+
+
+// ajouter consultant
+
+// Ajouter un consultant
+void MainWindow::on_pushButton_9_clicked() {
+    QString email = ui->lineEdit_4->text();
+    QString nom = ui->lineEdit_5->text();
+    QString specialite = ui->lineEdit_7->text();
+    QString disponibilite = ui->lineEdit_8->text();
+
+
+    if (email.isEmpty() || nom.isEmpty() || specialite.isEmpty() || disponibilite.isEmpty()) {
+        QMessageBox::warning(this, "Champs vides", "Veuillez remplir tous les champs !");
+        return;
+    }
+
+    // Création du consultant sans ID
+    Consultant consultant(nom, email, specialite, disponibilite);
+    if (consultant.ajouterConsultant(consultant)) {
+        QMessageBox::information(this, "Succès", "Consultant ajouté !");
+
+        ui->lineEdit_4->clear();
+        ui->lineEdit_5->clear();
+        ui->lineEdit_7->clear();
+        ui->lineEdit_8->clear();
+
+    }else {
+            // QMessageBox::critical(this, "Erreur", "Échec de l'ajout du consultant ");
+        }
+
+}
+// ajouter un projet
 void MainWindow::on_pushButton_ajouter_2_clicked()
 {
     int id_projet = ui->lineEdit_id_2->text().toInt();
@@ -151,6 +409,81 @@ void MainWindow::on_pushButton_ajouter_2_clicked()
         // QMessageBox::critical(this, "Erreur", "Échec de l'ajout du projet");
     }
 }
+//affichage consultant
+void MainWindow::loadConsultants() {
+    QSqlQuery query;
+    query.prepare("SELECT id_consultant, nom, email, specialite, disponibilite FROM CONSULTANT");
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Erreur", "Échec du chargement des consultants !");
+        return;
+    }
+
+    ui->tableWidget->clear();  // Nettoyer la table avant d'ajouter de nouvelles données
+    ui->tableWidget->setRowCount(0);  // Réinitialiser le nombre de lignes
+    ui->tableWidget->setColumnCount(5);  // Assurer le bon nombre de colonnes
+
+    QStringList headers = {"ID", "Nom", "Email", "Spécialité", "Disponibilité"};
+    ui->tableWidget->setHorizontalHeaderLabels(headers);  // Définir les en-têtes
+
+    int row = 0;
+    while (query.next()) {
+        ui->tableWidget->insertRow(row);
+        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(query.value("id_consultant").toString()));
+        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(query.value("nom").toString()));
+        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(query.value("email").toString()));
+        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(query.value("specialite").toString()));
+        ui->tableWidget->setItem(row, 4, new QTableWidgetItem(query.value("disponibilite").toString()));
+        row++;
+    }
+    ui->tableWidget->sortItems(1, Qt::AscendingOrder); // colonne 1 = nom
+
+}
+
+void MainWindow::on_pushButton_32_clicked() {
+    int row = ui->tableWidget->currentRow();
+    if (row == -1) {
+        QMessageBox::warning(this, "Aucune sélection", "Veuillez sélectionner un consultant !");
+        return;
+    }
+
+    // Lire l'ancien email depuis la table (colonne 2 → email)
+    QString ancienEmail = ui->tableWidget->item(row, 2)->text();
+
+    // Lire les nouvelles valeurs depuis les champs
+    QString nom = ui->lineEdit_4->text();
+    QString email = ui->lineEdit_2->text();
+    QString specialite = ui->lineEdit_5->text();
+    QString disponibilite = ui->lineEdit_7->text();
+
+    Consultant consultant(nom, email, specialite, disponibilite);
+    if (consultant.modifierConsultant(ancienEmail, consultant)) {
+        QMessageBox::information(this, "Succès", "Consultant modifié !");
+
+    } else {
+        QMessageBox::critical(this, "Erreur", "Échec de la modification !");
+    }
+}
+
+
+// Supprimer un consultant
+void MainWindow::on_pushButton_11_clicked() {
+    int row = ui->tableWidget->currentRow();
+    if (row == -1) {
+        QMessageBox::warning(this, "Aucune sélection", "Veuillez sélectionner un consultant !");
+        return;
+    }
+
+    int id = ui->tableWidget->item(row, 0)->text().toInt();
+
+    if (consultant->supprimerConsultant(id)) {
+        QMessageBox::information(this, "Succès", "Consultant supprimé !");
+        loadConsultants();
+    } else {
+        QMessageBox::critical(this, "Erreur", "Échec de la suppression !");
+    }
+}
+
+//ajouter ressource
 
 void MainWindow::on_pushButton_ajouter_clicked()
 {
@@ -1109,5 +1442,209 @@ void MainWindow::checkRFID(const QString &rfid) {
                              QString("Statut '%1' ≠ 'terminé' pour RFID '%2'")
                                  .arg(statut).arg(code));
         serial->write("CLOSE\n");
+    }
+}
+
+// pdf consultant
+void MainWindow::on_pushButton_8_clicked()
+{
+    QSqlQuery query;
+    query.prepare("SELECT id_consultant, nom, email, specialite, disponibilite FROM CONSULTANT");
+
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Erreur", "Problème avec la base de données.");
+        return;
+    }
+
+    // HTML avec grande taille de police et titre bien visible
+    QString html = R"(
+        <html>
+        <head>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                }
+
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    font-size: 48px; /* taille de police réduite pour plus d'espace */
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 17px;
+                    text-align: center;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>
+        </head>
+        <body>
+            <table>
+                <tr>
+                    <th>ID Projet</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Statut</th>
+                </tr>
+    )";
+
+    // Remplissage du tableau avec les données de la table 'projet'
+    while (query.next()) {
+        html += "<tr>";
+        html += "<td>" + query.value(0).toString() + "</td>";
+        html += "<td>" + query.value(1).toString() + "</td>";
+        html += "<td>" + query.value(2).toString() + "</td>";
+        html += "<td>" + query.value(3).toString() + "</td>";
+        html += "</tr>";
+    }
+
+    html += R"(
+            </table>
+        </body>
+        </html>
+    )";
+
+    // Choix du fichier
+    QString fileName = QFileDialog::getSaveFileName(this, "Enregistrer PDF", "", "*.pdf");
+    if (fileName.isEmpty()) return;
+    if (!fileName.endsWith(".pdf")) fileName += ".pdf";
+
+    // Configuration du PDF
+    QPdfWriter pdfWriter(fileName);
+    pdfWriter.setPageSize(QPageSize::A4);
+    pdfWriter.setResolution(300); // haute qualité
+    pdfWriter.setPageMargins(QMargins(60, 60, 60, 60)); // marges
+
+    QTextDocument doc;
+    doc.setHtml(html);
+    doc.setPageSize(QSizeF(pdfWriter.width(), pdfWriter.height()));
+
+    QPainter painter(&pdfWriter);
+    doc.drawContents(&painter);
+    painter.end();
+
+    QMessageBox::information(this, "Succès", "PDF généré avec succès !");
+}
+
+//stat consultant
+void MainWindow::on_pushButton_3_clicked()
+{
+    QSqlQuery query;
+    query.prepare("SELECT disponibilite, COUNT(*) FROM consultant GROUP BY disponibilite");
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Erreur SQL", "Erreur lors de l'exécution de la requête : " + query.lastError().text());
+        return;
+    }
+
+    // Create a pie chart series
+    QPieSeries *series = new QPieSeries();
+
+    // Create a chart object to add the slices
+    QChart *chart = new QChart();
+    chart->setTitle("statistiques des consultants");
+
+    while (query.next()) {
+        QString statut = query.value(0).toString();  // Get the status of the project
+        int count = query.value(1).toInt();          // Count of projects with that status
+
+        // Create a slice for each distinct statut
+        QPieSlice *slice = new QPieSlice(statut, count);
+        slice->setLabelVisible(true);
+
+        // Set the label to display the statut and the count
+        QString label = statut + ": " + QString::number(count) + " consultants";
+        slice->setLabel(label);
+        slice->setLabelPosition(QPieSlice::LabelInsideHorizontal);
+        slice->setLabelFont(QFont("Arial", 6, QFont::Bold));
+
+        // Connect hover signal to show tooltip
+        connect(slice, &QPieSlice::hovered, this, [=](bool state){
+            if (state) {
+                QToolTip::showText(QCursor::pos(),
+                                   "Statut: " + statut +
+                                       "\nNombre  des consultants: " + QString::number(count));
+            } else {
+                QToolTip::hideText();
+            }
+        });
+
+        // Append the slice to the series
+        series->append(slice);
+    }
+
+    // Add the series to the chart
+    chart->addSeries(series);
+
+    // Set up the chart view
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    // Create a dialog to display the chart
+    QDialog *dialog = new QDialog(this);
+    QVBoxLayout *layout = new QVBoxLayout(dialog);
+    layout->addWidget(chartView);
+    dialog->setLayout(layout);
+    dialog->setWindowTitle("Statistiques");
+    dialog->resize(700, 500);
+    dialog->exec();
+}
+
+//rechercher consultant
+
+void MainWindow::on_lineEdit_textChanged(const QString &text)
+{
+    for (int row = 0; row < ui->tableWidget->rowCount(); ++row) {
+        QTableWidgetItem *item = ui->tableWidget->item(row, 3); // colonne 3 = spécialité
+        if (item && !item->text().contains(text, Qt::CaseInsensitive)) {
+            ui->tableWidget->setRowHidden(row, true);
+        } else {
+            ui->tableWidget->setRowHidden(row, false);
+        }
+    }
+}
+
+//arduino moujib
+
+void MainWindow::on_pushButton_pointage_clicked()
+{
+    if (!arduino->isOpen()) {
+        arduino->setPortName("COM7"); // adapte le COM port
+        arduino->setBaudRate(QSerialPort::Baud9600);
+        arduino->setDataBits(QSerialPort::Data8);
+        arduino->setParity(QSerialPort::NoParity);
+        arduino->setStopBits(QSerialPort::OneStop);
+        arduino->setFlowControl(QSerialPort::NoFlowControl);
+
+        if (!arduino->open(QIODevice::ReadWrite)) {
+            QMessageBox::critical(this, "Erreur", "Impossible d'ouvrir le port série !");
+            return;
+        }
+
+        connect(arduino, &QSerialPort::readyRead, this, &MainWindow::lireDonneesArduino);
+    }
+    QMessageBox::information(this, "Pointage", "Tapez votre ID sur le clavier Arduino.");
+}
+
+void MainWindow::lireDonneesArduino()
+{
+    serialBuffer += arduino->readAll();
+    if (serialBuffer.contains("\n")) { // On attend un retour chariot (\n)
+        QString id = serialBuffer.trimmed(); // Trim le \n et espaces
+        serialBuffer.clear(); // clear au lieu de = ""
+
+        qDebug() << "ID reçu : " << id;
+
+        QSqlQuery query;
+        query.prepare("SELECT * FROM consultant WHERE id_consultant = :id");
+        query.bindValue(":id", id.toInt());
+        if (query.exec() && query.next()) {
+            arduino->write("Bienvenue\n"); // Envoyer le message à Arduino
+            qDebug() << "Consultant trouvé. Message Bienvenue envoyé.";
+        } else {
+            arduino->write("Erreur ID\n");
+            qDebug() << "Consultant introuvable. Message Erreur ID envoyé.";
+        }
     }
 }
