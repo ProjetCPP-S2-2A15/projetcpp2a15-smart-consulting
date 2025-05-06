@@ -39,16 +39,26 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    client.cpp \
     connection.cpp \
     consultant.cpp \
+<<<<<<< HEAD
+=======
+    mailing.cpp \
+>>>>>>> c2b1c55 (gestion ressource projet consultant)
     main.cpp \
     mainwindow.cpp \
     projet.cpp \
     ressource.cpp
 
 HEADERS += \
+    client.h \
     connection.h \
     consultant.h \
+<<<<<<< HEAD
+=======
+    mailing.h \
+>>>>>>> c2b1c55 (gestion ressource projet consultant)
     mainwindow.h \
     projet.h \
     ressource.h

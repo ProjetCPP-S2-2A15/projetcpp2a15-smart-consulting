@@ -1,12 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "mailing.h"
 #include "ressource.h"
 #include <QMainWindow>
 #include <QStackedWidget>
 #include <QPushButton>
 #include <QSystemTrayIcon>
+<<<<<<< HEAD
 #include "ressource.h"
+=======
+#include "client.h"
+>>>>>>> c2b1c55 (gestion ressource projet consultant)
 #include "consultant.h"
 #include <QQmlContext>
 #include <QtSerialPort/QSerialPort>
@@ -49,9 +53,27 @@ public:
     void on_pushButton_mdp_oublie_clicked();
     bool verifierIdentifiants(const QString &username, const QString &password);
     void on_pushButton_connexion_clicked() ;
+<<<<<<< HEAD
     void showPage1();  // Slot pour afficher la page 1 lorsque le bouton est cliqué
     void showPage2();
  void showPage3();    // Slot pour afficher la page 2 lorsque le bouton est cliqué
+=======
+    //client
+    void showPage7();
+    void showHomePage3_3();
+    void ajouter_client();
+    void supprimer_client();
+    void modifier_client();
+    void rechercher_client();
+    void pdf_client();
+    void trier_client();
+    void mailing_client();
+    void stat_client();
+    //
+    void showPage1();  // Slot pour afficher la page 1 lorsque le bouton est cliqué
+    void showPage2();
+    void showPage3();    // Slot pour afficher la page 2 lorsque le bouton est cliqué
+>>>>>>> c2b1c55 (gestion ressource projet consultant)
     void showHomePage(); // retourner a la page d'acceuil d'apres page projet
     void showHomePage2(); // retourner à la page d'acceuil d'apres page ressource
     void showPage5();
@@ -81,6 +103,10 @@ public:
           void on_pushButton_valider_clicked();
      void lireDonneesArduino();
      void on_pushButton_pointage_clicked();
+<<<<<<< HEAD
+=======
+     void readArduinoData();
+>>>>>>> c2b1c55 (gestion ressource projet consultant)
 private:
     Ui::MainWindow *ui;
     Ressource res;
@@ -95,6 +121,16 @@ private:
     QSerialPort *arduino;
     QString serialBuffer;
 
+<<<<<<< HEAD
+=======
+    //arduino scott
+    QSerialPort *serialPort; // Déclaration du port série
+
+
+    void setupSerialConnection(); // Fonction pour configurer le port série
+
+>>>>>>> c2b1c55 (gestion ressource projet consultant)
 };
+
 
 #endif // MAINWINDOW_H
